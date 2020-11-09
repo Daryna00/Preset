@@ -1,0 +1,146 @@
+nav{
+    background: url(https://image.freepik.com/free-photo/beautiful-glossy-green-leaves-grass-background_121837-1622.jpg) no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+     background-size: cover;
+    color: white;
+    font-family: 'Caveat', cursive;
+    font-size: 50px;
+    height: 300px;
+    padding: 10px;
+    margin: -8px -8px 2px -8px;
+    text-align: left;
+    justify-content: left;
+}
+.title{
+
+    background: white;
+    /*background-color: rgba(11, 33, 11, 10%);*/
+    color:  black;
+    font-family: 'Amatic SC', cursive;
+    font-size: 20px;
+    text-align: left;
+    padding: 0px 15px;
+    width: 1800px;
+
+
+}
+.menu{
+     list-style-type: none;
+    margin: 0;
+    margin: -8px -8px 1px -8px;
+    text-align: left;
+    justify-content: left;
+}
+.name{
+
+    text-align: right;
+    justify-content: right;
+}
+.menu{
+     list-style-type: none;
+    margin: -7px;
+    padding: 0;
+}
+.menu a {
+  text-decoration: none;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  min-height: 10px;
+  color: white;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: OliveDrab;
+  border-bottom: 5px solid DarkGreen;
+}
+.menu li {
+  display: inline;
+}
+.title1{
+
+    background: white;
+    /*background-color: rgba(11, 33, 11, 10%);*/
+    color:  black;
+    font-family: 'Amatic SC', cursive;
+    font-size: 20px;
+    text-align: center;
+    padding: 0px 15px;
+    width: 1800px;
+
+
+}
+img{
+    opacity: 100%;
+}
+body{
+    background: url(C:\Users\Daryna\Desktop\3254309) no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+     background-size: cover;
+}
+
+.container{
+    background: white;
+    /*background-color: rgba(11, 33, 11, 10%);*/
+    color: black;
+    width: 800px;
+    min-height: 400px;
+    width: 1000px;
+    min-height: 300px;
+    font-family: 'Amatic SC', cursive;
+    font-size: 30px;
+    text-align: justify;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+.container1{
+    background: white;
+    /*background-color: rgba(11, 33, 11, 10%);*/
+    color: black;
+    position: absolute; /* Абсолютное позиционирование */
+    right: 0; /* Положение от правого края окна */
+    top: 370px; /* Положение от верхнего края */
+    width: 700px;
+    min-height: 400px;
+    font-family: 'Amatic SC', cursive;
+    font-size: 30px;
+    text-align: justify;
+    padding: 10px 15px;
+
+}
+.container2{
+    background: white;
+    /*background-color: rgba(11, 33, 11, 10%);*/
+    color: black;
+
+    min-height: 400px;
+    font-family: 'Amatic SC', cursive;
+    font-size: 30px;
+    text-align: justify;
+
+
+    padding: 10px 15px;
+}
+
+footer{
+    background: url(https://cdn.pixabay.com/photo/2018/10/15/07/33/background-3748312_960_720.jpg) no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+     background-size: cover;
+    border-style: none;
+    color: gold;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 20px;
+    right: 0;
+    height: 50px;
+    padding: 10px;
+    justify-content: center;
+    margin: 30px -8px -30px -10px;
+    text-align: center;
+    justify-content: center;
+
+}

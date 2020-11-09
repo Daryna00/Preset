@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<nav>
+    My Presets!
+    <div>
+        {% block img_logo %}
+ <img alt="preset logo"
+             src="https://library.kissclipart.com/20181004/czq/kissclipart-snapshot-icon-transparent-clipart-computer-icons-s-a70a50a60394b814.png"
+             width="8%">
+        {% endblock img_logo %}
+    </div>
+
+<div class="name">
+        {% if user.is_superuser %}
+        Admin
+        {% elif user.is_authenticated %}
+        Logged in
+        {% endif %}
+    </div>
+</nav>
+
+<url class="menu">
+    <li><a href="{% url 'homepage' %}">Главная страница</a></li>
+    <li><a href="what_is_it">Что такое пресет</a></li>
+    {% if user.is_authenticated %}
+    <li><a href="{% url 'mypage'  %}">Личный кабинет</a></li>
+    <li><a href="{% url 'logout'  %}">Выйти из профиля</a></li>
+    {% else %}
+    <li><a href="{% url 'login-page'  %}">Войти в профиль</a></li>
+    <li><a href="{% url 'register'  %}">Зарегистрироваться</a></li>
+    {% endif %}
+</url>
+
+<div class="title1">
+
+    {% block title1 %}
+    {% endblock title1 %}
+</div>
+
+<div class="container">
+
+    {% block content %}
+    {% endblock content %}
+</div>
+<div class="container1">
+
+    {% block content1 %}
+    {% endblock content1 %}
+</div>
+<div class="container2">
+
+    {% block content2 %}
+    {% endblock content2 %}
+</div>
+</body>
+<footer>
+    Kyiv, 2020
+</footer>
+
+
+</html>

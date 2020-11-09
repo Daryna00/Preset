@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Login
+{% endblock title %}
+
+
+{% block link %}
+{% endblock link %}
+
+{% block content %}
+{% csrf_token %}
+{{ report }}
+{% if user.is_authenticated %}
+<p>Привет {{ user.username }}!</p>
+{% else %}
+<p>You are not logged in.</p>
+<a href="{% url 'login-page'  %}">Войти в профиль</a>
+{% endif %}
+{% endblock content %}
+{% block content1 %}
+
+    <p>
+        <img alt="preset logo"
+         src="https://image.flaticon.com/icons/png/512/9/9240.png"
+         width="6%">
+        <a href="{% url 'login-page'  %}">Корзина</a>
+    </p>
+    <p>
+        <img alt="preset logo"
+         src="https://cdn2.sportngin.com/attachments/call_to_action/6111/4201/icon-coaching_large.png"
+         width="6%">
+        <a href="{% url 'login-page'  %}">Стол заказов</a>
+    </p>
+    <p>
+        <img alt="preset logo"
+         src="https://library.hud.ac.uk/webpages/img/icons/document.png"
+         width="6%">
+        <a href="{% url 'login-page'  %}">Список пожеланий</a>
+    </p>
+    <p>
+        <img alt="preset logo"
+         src="https://image.flaticon.com/icons/png/512/104/104615.png"
+         width="6%">
+        <a href="{% url 'login-page'  %}">Вопросы и ответы</a>
+    </p>
+
+{% endblock content1 %}

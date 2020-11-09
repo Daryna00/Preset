@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Login
+{% endblock title %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock link %}
+
+{% block content %}
+
+<form class="form-group" action="/register" method="post">
+    {% csrf_token %}
+    <div class="error">
+        {{ report }}
+    <p>
+        <label for="login_field">Login</label>
+        <input id="login_field" name="login_field" type="text" placeholder="Введите логин">
+    </p>
+    <p>
+        <label for="email_field">Email</label>
+        <input id="email_field" name="email_field" type="email" placeholder="Введите почту">
+    </p>
+    <p>
+        <label for="password_field">Password</label>
+        <input id="password_field" name="password_field" type="password" placeholder="Введите пароль">
+    </p>
+        <p>
+        <label for="password_confirm_field">Password Confirmation</label>
+        <input id="password_confirm_field" name="password_confirm_field" type="password" placeholder="Введите пароль еще раз">
+    </p>
+
+    <button>
+        Login
+    </button>
+    <button>
+        Cancel
+    </button>
+</form>
+
+
+{% endblock content %}

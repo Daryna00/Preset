@@ -1,0 +1,21 @@
+div{
+        background-color: magenta;
+    }
+    .green-block{
+        background-color: green;
+    }
+    .text-white{
+        color: #ffffff;
+    }
+    #title{
+        font-size: 30px;
+        text-align: justify ;
+    }
+    p{
+        background-color: lightgrey;
+        font-family: Arial sans-serif;
+        font-style: italic;
+        font-size: 20px;
+        color: magenta;
+        border: 1px solid blue;
+    }
