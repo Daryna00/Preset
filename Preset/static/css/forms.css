@@ -16,3 +16,7 @@
     padding: 3px;
     width: 20%;
 }
+.err{
+    color: red;
+    margin-left: 7px;
+}

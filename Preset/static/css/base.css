@@ -73,13 +73,6 @@ nav{
 img{
     opacity: 100%;
 }
-body{
-    background: url(C:\Users\Daryna\Desktop\3254309) no-repeat center top fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-     background-size: cover;
-}
 
 .container{
     background: white;
@@ -115,7 +108,7 @@ body{
     background: white;
     /*background-color: rgba(11, 33, 11, 10%);*/
     color: black;
-
+    margin: 120px 2px 0px 0px;
     min-height: 400px;
     font-family: 'Amatic SC', cursive;
     font-size: 30px;
@@ -143,4 +136,3 @@ footer{
     text-align: center;
     justify-content: center;
 
-}
