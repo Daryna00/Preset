@@ -95,7 +95,7 @@ def my_page(request):
     }
     return render(request, 'home/login-page.html', context=data)
 
-def ajax_reg(request) -> JsonResponse:
+def ajax_reg_login(request) -> JsonResponse:
     response = dict()
     _login = request.GET.get('login_field')
 
@@ -105,7 +105,19 @@ def ajax_reg(request) -> JsonResponse:
     except User.DoesNotExist:
         response['message_login'] = "свободен"
 
-    print(_login)
+    return JsonResponse(response)
+
+def ajax_reg_pass2(request) -> JsonResponse:
+    response = dict()
+    _pass2 = request.GET.get('password_confirm_field')
+    _pass1 = request.GET.get('password_field')
+    if _pass1 != _pass2:
+        response['message_pass2'] = "не совпадает"
+    else:
+        response['message_pass2'] = "совпадает"
+    print(_pass1)
+    print(_pass2)
     print(response)
 
     return JsonResponse(response)
+
