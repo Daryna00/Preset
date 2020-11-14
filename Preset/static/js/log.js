@@ -6,6 +6,7 @@ $(document).ready(function () {
 
     let loginExp = /^[a-zA-Z0-9][a-zA-Z0-9_]{4,14}$/
     let passExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,15}$/;
+    $('#check').click(function () {
     $('#login_field').change(function () {
         let _login = $(this).val()
         // console.log(loginExp.test(_login))
@@ -40,8 +41,7 @@ $(document).ready(function () {
         $('#login_ico').attr('src', '../../static/img/question.png')
         $('#login_err').text('')
     })
-
-     $('#password_field').blur(function () {
+     $('#password_field').click(function () {
         let _pass1 = $(this).val()
         if (passExp.test(_pass1)){ // валидный емайл
             $('#password_ico').attr('src', '../../static/img/win.png')
@@ -69,5 +69,5 @@ $(document).ready(function () {
         }
 
     })
-
+})
 })
