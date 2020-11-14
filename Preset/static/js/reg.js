@@ -1,6 +1,7 @@
 $(document).ready(function () {
     console.log('ready works');
 
+
     let valid_login = false;
     let valid_email = false;
     let valid_password = false;
@@ -65,42 +66,7 @@ $(document).ready(function () {
     })
 
 
-    $('#password_confirm_field').blur(function () {
-        let _pass2 = $(this).val()
-        if (passExp.test(_pass2)){ // валидный емайл
-
-                 $.ajax({
-                url: '/ajax_reg_pass2',
-                data: 'password_confirm_field=' + _pass2,
-                success: function (result) {
-                    if (result.message_pass2 === 'совпадает'){
-                        $('#password_confirm_ico').attr('src', '../../static/img/win.png')
-                        $('#password_confirm_err').text('')
-
-                        valid_password2 = true;
-                    }else{
-                        $('#password_confirm_ico').attr('src', '../../static/img/error.png')
-                        $('#password_confirm_err').text('!!!!!!')
-                        valid_password2 = false;
-                    }
-                }
-
-            })
-
-        }else{// не валидный емайл
-            $('#password_confirm_ico').attr('src', '../../static/img/error.png')
-            $('#password_confirm_err').text('Пароль должен содержать большие и маленькие буквы и цыфры, количество символов 8-16!!!')
-            valid_password = false;
-        }
-    })
-
-    $('#password_confirm_field').focus(function () {  // сброс ошибок и иконок
-        $('#password_confirm_ico').attr('src', '../../static/img/question.png')
-        $('#password_confirm_err').text('')
-    })
-
-
-    $('#password_field').blur(function () {
+     $('#password_field').blur(function () {
         let _pass1 = $(this).val()
         if (passExp.test(_pass1)){ // валидный емайл
             $('#password_ico').attr('src', '../../static/img/win.png')
@@ -108,7 +74,7 @@ $(document).ready(function () {
             valid_password = true;
         }else{// не валидный емайл
             $('#password_ico').attr('src', '../../static/img/error.png')
-            $('#password_err').text('Пароль должен содержать буквы и цыфры, количество символов 8-16!!!')
+            $('#password_err').text('Пароль должен содержать хотя-бы одну заглавную букву и цыфры, количество символов 8-16!!!')
             valid_password = false;
         }
     })
@@ -118,13 +84,36 @@ $(document).ready(function () {
         $('#password_err').text('')
     })
 
+    $('#password_confirm_field').blur(function () {
+        let _pass2 = $(this).val()
+        if (passExp.test(_pass2)){
+             if ($("#password_field").val() === $("#password_confirm_field").val()){// не валидный
+                  $('#password_confirm_ico').attr('src', '../../static/img/win.png')
+                  $('#password_confirm_err').text('')
+                  valid_password2 = true;
+             }else{
+                   $('#password_confirm_ico').attr('src', '../../static/img/error.png')
+                   $('#password_confirm_err').text('Пароли должны быть одинаковы!!!')
+                   valid_password2 = false;
+        }}else{// не валидный
+            $('#password_confirm_ico').attr('src', '../../static/img/error.png')
+            $('#password_confirm_err').text('Пароль должен содержать хотя-бы одну заглавную букву и цыфры, количество символов 8-16!!!')
+            valid_password2 = false;
+        }
+    })
+
+    $('#password_confirm_field').focus(function () {  // сброс ошибок и иконок
+        $('#password_confirm_ico').attr('src', '../../static/img/question.png')
+        $('#password_confirm_err').text('')
+    })
+
 
     $('#submit').click(function () {
         if (
             valid_login === true &&
             valid_email === true &&
-            valid_password2 === true &&
-            valid_password === true
+            valid_password === true &&
+            valid_password2 === true
         ){
             $('.form-group').attr('onsubmit', 'return true')
         }
