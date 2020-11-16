@@ -47,8 +47,6 @@
     {% if user.is_authenticated %}
     <li><a href="{% url 'mypage'  %}">Личный кабинет</a></li>
     <li><a href="{% url 'logout'  %}">Выйти из профиля</a></li>
-    {% elif username == 'Admin' %}
-    <li><a href="{% url 'product_homepage'  %}">Категории пресетов</a></li>
     {% else %}
     <li><a href="{% url 'login-page'  %}">Войти в профиль</a></li>
     <li><a href="{% url 'register'  %}">Зарегистрироваться</a></li>
