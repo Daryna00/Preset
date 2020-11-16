@@ -106,6 +106,3 @@ def ajax_reg_login(request) -> JsonResponse:
         response['message_login'] = "свободен"
 
     return JsonResponse(response)
-
-
-

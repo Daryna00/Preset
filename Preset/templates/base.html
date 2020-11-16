@@ -43,9 +43,12 @@
 <url class="menu">
     <li><a href="{% url 'homepage' %}">Главная страница</a></li>
     <li><a href="what_is_it">Что такое пресет</a></li>
+    <li><a href="{% url 'product_homepage'  %}">Категории пресетов</a></li>
     {% if user.is_authenticated %}
     <li><a href="{% url 'mypage'  %}">Личный кабинет</a></li>
     <li><a href="{% url 'logout'  %}">Выйти из профиля</a></li>
+    {% elif username == 'Admin' %}
+    <li><a href="{% url 'product_homepage'  %}">Категории пресетов</a></li>
     {% else %}
     <li><a href="{% url 'login-page'  %}">Войти в профиль</a></li>
     <li><a href="{% url 'register'  %}">Зарегистрироваться</a></li>
