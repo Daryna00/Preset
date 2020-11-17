@@ -46,7 +46,7 @@ nav{
 .menu a {
   text-decoration: none;
   font-family: 'Caveat', cursive;
-  font-size: 20px;
+  font-size: 13px;
   min-height: 10px;
   color: white;
   display: inline-block;
@@ -87,6 +87,7 @@ img{
     text-align: justify;
     border-radius: 10px;
     padding: 10px 15px;
+    margin: 20px 0px 0px 0px;
 }
 
 .container1{
@@ -97,11 +98,12 @@ img{
     right: 0; /* Положение от правого края окна */
     top: 370px; /* Положение от верхнего края */
     width: 700px;
-    min-height: 400px;
+    min-height: 200px;
     font-family: 'Amatic SC', cursive;
     font-size: 30px;
     text-align: justify;
     padding: 10px 15px;
+    margin: 40px 0px 0px 0px;
 
 }
 .container2{

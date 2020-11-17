@@ -2,9 +2,9 @@
 {% load static %}
 
 {% block title %}
-
+Все пресеты
 {% endblock title %}
-    Все пресеты
+
 {% block img_logo %}
 
 {% endblock img_logo %}
@@ -14,5 +14,6 @@
 {% endblock title1 %}
 
 {% block content %}
-
+<a class="button" href="{% url 'create_product' %}">Создать категорию </a>
+<a class="button" href="{% url 'product_list' %}">Список категорий</a>
 {% endblock content %}

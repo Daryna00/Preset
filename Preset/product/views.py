@@ -29,10 +29,10 @@ def product_detail(request, id: int):
 
 def product_list(request):
     data = {}
-    all_groups = Product.objects.all()
+    all_product = Product.objects.all()
 
-    data['groups'] = all_groups
-    return render(request, 'product/group_list.html', context=data)
+    data['product'] = all_product
+    return render(request, 'product/list.html', context=data)
 
 
 def update_product(request, id: int):

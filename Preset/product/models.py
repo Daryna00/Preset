@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Product(models.Model):
+
     name = models.CharField(max_length=150)
     about = models.TextField(max_length=2048)
     max_presets = models.IntegerField(default=10)

@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
-    'product'
+    'product',
+    'merchan'
 ]
 
 MIDDLEWARE = [
@@ -122,3 +123,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+MEDIA_ROOT = [BASE_DIR / 'media']
+MEDIA_URL = '/media/'

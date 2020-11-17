@@ -5,6 +5,10 @@
     Создание категории пресетов
 {% endblock title %}
 
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock link %}
+
 {% block img_logo %}
 
 {% endblock img_logo %}
@@ -14,6 +18,23 @@
 {% endblock title1 %}
 
 {% block content %}
+<h1>Создать Группу:</h1>
+
+
+<form class="form-group" id="create-product" method="post" action="{% url 'create_product' %}">
+    {% csrf_token %}
+    Form to add product
+
+    {% for field in group_form %}
+    <p>
+        {{ field.label_tag }} {{ field }}
+    </p>
+    {% endfor %}
+
+        <input id="submit" type="submit" value="Send" class="button">
+        <input type="reset" value="Clear" class="button">
+
+</form>
 
 {% endblock content %}
 

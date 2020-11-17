@@ -14,5 +14,15 @@
 {% endblock title1 %}
 
 {% block content %}
+{% for product in product %}
+<div class="button" >
+<a href="{% url 'product_detail' product.id %}">
 
+    {{ product.id }}. {{ product.name }}
+
+</a>
+<a href="{% url 'delete_product' product.id %}" class="delete_product">X</a>
+<a href="{% url 'update_product' product.id %}" class="update_product">Edit product</a>
+</div>
+{% endfor %}
 {% endblock content %}
