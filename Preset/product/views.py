@@ -19,6 +19,8 @@ def create_product(request):
         return redirect('/product/list')
 
 
+
+
 def delete_product(request, id: int):
     return render(request, 'product/delete.html')
 

@@ -44,7 +44,7 @@
 
 <url class="menu">
     <li><a href="{% url 'homepage' %}">Главная страница</a></li>
-    <li><a href="what_is_it">Что такое пресет</a></li>
+    <li><a href="{% url 'what_is_it' %}">Что такое пресет</a></li>
     <li><a href="{% url 'product_homepage'  %}">Категории пресетов</a></li>
     {% if user.is_authenticated %}
     <li><a href="{% url 'mypage'  %}">Личный кабинет</a></li>

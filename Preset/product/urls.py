@@ -9,4 +9,5 @@ urlpatterns = [
     path('<int:id>/details', product_detail, name='product_detail'),
     path('list', product_list, name='product_list'),
     path('', include('merchan.urls'))
+
 ]

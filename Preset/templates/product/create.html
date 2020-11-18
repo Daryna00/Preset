@@ -21,7 +21,7 @@
 <h1>Создать Группу:</h1>
 
 
-<form class="form-group" id="create-product" method="post" action="{% url 'create_product' %}">
+<form class="form-group" id="create-product" method="post" action="{% url 'create_product' %}" enctype="multipart/form-data">
     {% csrf_token %}
     Form to add product
 
