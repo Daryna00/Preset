@@ -1,31 +1,89 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from django.http import JsonResponse
+from .forms import ContactForm
+from merchan.models import Merchandise
+from product.models import Product
+from .models import Order
+from django.core.paginator import Paginator
+from django.db.models import Q
+from django.conf import settings
+from django.core.mail import send_mail
+from django.template.loader import get_template
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import Http404, JsonResponse
 
+def contact(request):
+    data = {}
+    form = ContactForm(request.POST or None)
+    if form.is_valid():
+        form_email = form.cleaned_data.get('from_email')
+        form_subject = form.cleaned_data.get('subject')
+        form_text = form.cleaned_data.get('message')
+        header = 'Website: My Preset!'
+        email_admin = settings.DEFAULT_TO_EMAIL
+        text = f"""
+            
+            {form_email} 
+            {form_subject} 
+            
+
+            Message:
+                {form_text}
+            """
+        html_file = get_template('home/mail.html')
+
+        data['form_text'] = form_text
+        data['form_subject'] = form_subject
+        data['form_email'] = form_email
+        html_content = html_file.render(context=data)
+
+        send_mail(header, text, email_admin, [email_admin, '@gmail.com'], fail_silently=False, html_message=html_content)
+    data['form'] = form
+    return render(request, 'home/contact.html', context=data)
 
 # Create your views here.
 def index(request):
-    data = {
-        'part2': False,
-        'part3': False
-    }
+    data = dict()
+    product = Product.objects.all()
+
+    filtered_product = request.GET.getlist('product')
+    filtered_product = list(map(int, filtered_product))
+    all_orders = Order.objects.filter(customer=request.user)
+    if filtered_product:
+        merchan = Merchandise.objects.filter(product__id__in=filtered_product)
+    else:
+        merchan = Merchandise.objects.all()
+
+    paginator = Paginator(product, 6)
+    page1_number = request.GET.get('page1')
+    page1_obj = paginator.get_page(page1_number)
+    data['page1_obj'] = page1_obj
+
+    search = request.GET.get('search')
+    if search:
+        result_posts = merchan.filter(
+            Q(name__icontains=search)
+        )
+        merchan = result_posts
+        data['search'] = search
+
+    paginator = Paginator(merchan, 15)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    data['page_obj'] = page_obj
+    data['product'] = product
+    data['merchan'] = merchan
+    data['orders'] = all_orders
     return render(request, 'home/index.html', context=data)
 
 
 def what_is_it(request):
-    data = {
-        'part2': True,
-        'part3': True
-    }
-    return render(request, 'home/what-is-it.html', context=data)
+    return render(request, 'home/what-is-it.html')
 
 
 def sign_in(request):
-    data = {
-        'part2': False,
-        'part3': False
-    }
+    data = {}
     if request.method == "GET":
         if request.user.is_authenticated:
             return redirect("/mypage")
@@ -51,14 +109,10 @@ def logout_user(request):
 
 
 def register(request):
-    data2 = {
-        'part2': False,
-        'part3': False
-    }
     if request.method == "GET":
         if request.user.is_authenticated:
             return redirect("/mypage")
-        return render(request, 'home/register.html', context=data2)
+        return render(request, 'home/register.html')
     elif request.method == "POST":
         login = request.POST.get('login_field')
         email = request.POST.get('email_field')
@@ -88,11 +142,7 @@ def register(request):
 
 
 def my_page(request):
-    data = {
-        'part1': True,
-        'part2': True,
-        'part3': False
-    }
+    data = {}
     return render(request, 'home/login-page.html', context=data)
 
 def ajax_reg_login(request) -> JsonResponse:
@@ -106,3 +156,58 @@ def ajax_reg_login(request) -> JsonResponse:
         response['message_login'] = "свободен"
 
     return JsonResponse(response)
+
+
+def add_to_card(request, slug):
+    if not request.user.is_authenticated:
+        return redirect('/')
+
+    try:
+        merchan = Merchandise.objects.get(slug=slug)
+        new_order = Order(customer=request.user, merchan=merchan, count=0)
+        my_orders_with_merchan = Order.objects.filter(customer=request.user, merchan=merchan)
+        if my_orders_with_merchan.exists():
+            new_order = my_orders_with_merchan.first()
+        new_order.count += 1
+        new_order.save()
+        print(new_order)
+        return redirect('homepage')
+    except ObjectDoesNotExist:
+        raise Http404
+
+def delete_from_card(request, slug):
+    result = {}
+    result['status'] = 'error'
+
+    if not request.user.is_authenticated:
+        return JsonResponse(result)
+
+    try:
+        merchan = Merchandise.objects.get(slug=slug)
+        order = Order.objects.get(customer=request.user, merchan=merchan)
+        order.delete()
+        result['status'] = 'ok'
+        return JsonResponse(result)
+    except ObjectDoesNotExist:
+        return JsonResponse(result)
+
+
+def change_order_count(request, order_id):
+    result = {}
+    result['status'] = 'error'
+    if Order.objects.filter(id=order_id, customer=request.user).exists():
+        order = Order.objects.get(id=order_id, customer=request.user)
+        action = request.GET.get('action')
+        current_order_number = order.count
+        print(current_order_number)
+        if action == 'increase':
+            current_order_number += 1
+        elif action == 'decrease' and current_order_number > 1:
+            current_order_number -= 1
+        print(current_order_number)
+        order.count = current_order_number
+        order.save()
+
+        result['status'] = 'ok'
+        result['new_number'] = current_order_number
+    return JsonResponse(result)

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Все пресеты
+{% endblock title %}
+
+{% block img_logo %}
+
+<img width="13%" src="{% static 'img/C4500EC1-500E-45F4-A24C-9FDAD8914040.png' %}" style="margin: 30px 15px;" alt="preset logo">
+{% endblock img_logo %}
+
+{% block title1 %}
+
+{% endblock title1 %}
+
+{% block content %}
+{% for merchan in merchan %}
+<div class="button" >
+<a href="{% url 'detail' merchan.slug %}">
+
+    {{ merchan.id }}. {{ merchan.name }}
+
+</a>
+<a href="{% url 'delete_merchan' merchan.slug %}" class="delete_merchan">X</a>
+<a href="{% url 'update_merchan' merchan.slug %}" class="update_merchan">Edit product</a>
+</div>
+{% endfor %}
+<a href="{% url 'product_homepage' %}">Назад</a>
+{% endblock content %}

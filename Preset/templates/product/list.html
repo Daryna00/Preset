@@ -7,6 +7,7 @@
 
 {% block img_logo %}
 
+<img width="13%" src="{% static 'img/C4500EC1-500E-45F4-A24C-9FDAD8914040.png' %}" style="margin: 30px 15px;" alt="preset logo">
 {% endblock img_logo %}
 
 {% block title1 %}
@@ -15,14 +16,20 @@
 
 {% block content %}
 {% for product in product %}
+
 <div class="button" >
-<a href="{% url 'product_detail' product.id %}">
+<a href="{% url 'product_detail' product.slug %}">
 
     {{ product.id }}. {{ product.name }}
 
 </a>
-<a href="{% url 'delete_product' product.id %}" class="delete_product">X</a>
-<a href="{% url 'update_product' product.id %}" class="update_product">Edit product</a>
+
+
+
+<a href="{% url 'delete_product' product.slug %}" class="delete_product">X</a>
+<a href="{% url 'update_product' product.slug %}" class="update_product">Edit product</a>
 </div>
+
 {% endfor %}
+<a href="{% url 'product_homepage' %}">Назад</a>
 {% endblock content %}

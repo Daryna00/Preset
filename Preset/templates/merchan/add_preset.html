@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Создание категории пресетов
+{% endblock title %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock link %}
+
+{% block img_logo %}
+
+<img width="13%" src="{% static 'img/C4500EC1-500E-45F4-A24C-9FDAD8914040.png' %}" style="margin: 30px 15px;" alt="preset logo">
+{% endblock img_logo %}
+
+{% block title1 %}
+
+{% endblock title1 %}
+
+
+{% block content %}
+<h1>Создать Группу:</h1>
+
+
+<form class="form-group" id="add_preset" method="post" action="{% url 'add_preset' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    Создать пресет
+    <a href="{% url 'product_homepage' %}">Назад</a>
+
+    {% for field in  merchan_form %}
+
+    <p>
+        {{ field.label_tag }} {{ field }}
+    </p>
+    {% endfor %}
+
+        <input id="submit" type="submit" value="Send" class="button">
+        <input type="reset" value="Clear" class="button">
+
+</form>
+{% if img_obj %}
+  <h3>Succesfully uploaded!</h3>
+  <img src="{{ img_obj.image.url}}" alt="connect" style="max-height:300px">
+{% endif %}
+
+{% endblock content %}

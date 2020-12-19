@@ -4,6 +4,10 @@
 {% block title %}
 Login
 {% endblock title %}
+{% block img_logo %}
+
+<img width="13%" src="{% static 'img/C4500EC1-500E-45F4-A24C-9FDAD8914040.png' %}" style="margin: -100px 15px;" alt="preset logo">
+{% endblock img_logo %}
 
 
 {% block link %}
@@ -20,13 +24,6 @@ Login
 {% endif %}
 {% endblock content %}
 {% block content1 %}
-
-    <p>
-        <img alt="preset logo"
-         src="https://image.flaticon.com/icons/png/512/9/9240.png"
-         width="6%">
-        <a href="{% url 'login-page'  %}">Корзина</a>
-    </p>
     <p>
         <img alt="preset logo"
          src="https://cdn2.sportngin.com/attachments/call_to_action/6111/4201/icon-coaching_large.png"
@@ -41,9 +38,15 @@ Login
     </p>
     <p>
         <img alt="preset logo"
-         src="https://image.flaticon.com/icons/png/512/104/104615.png"
+         src="https://www.flaticon.com/svg/static/icons/svg/2089/2089768.svg"
          width="6%">
         <a href="{% url 'login-page'  %}">Вопросы и ответы</a>
+    </p>
+    <p>
+        <img alt="preset logo"
+         src="https://www.flaticon.com/svg/static/icons/svg/181/181512.svg"
+         width="6%">
+        <a href="{% url 'contact'  %}">Контакты</a>
     </p>
 
 {% endblock content1 %}

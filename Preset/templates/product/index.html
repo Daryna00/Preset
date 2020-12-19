@@ -7,6 +7,7 @@
 
 {% block img_logo %}
 
+<img width="13%" src="{% static 'img/C4500EC1-500E-45F4-A24C-9FDAD8914040.png' %}" style="margin: 30px 15px;" alt="preset logo">
 {% endblock img_logo %}
 
 {% block title1 %}
@@ -14,6 +15,8 @@
 {% endblock title1 %}
 
 {% block content %}
-<a class="button" href="{% url 'create_product' %}">Создать категорию </a>
-<a class="button" href="{% url 'product_list' %}">Список категорий</a>
+<h1><a class="button" href="{% url 'create_product' %}">Создать категорию </a>
+<a class="button" href="{% url 'product_list' %}">Список категорий</a></h1>
+<h2><a href="{% url 'add_preset' %}" class="button">Добавить пресет</a>
+    <a href="{% url 'merchan_list' %}" class="button">Список пресетов</a></h2>
 {% endblock content %}

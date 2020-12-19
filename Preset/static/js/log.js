@@ -10,6 +10,8 @@ $(document).ready(function () {
         let _login = $(this).val()
         // console.log(loginExp.test(_login))
         if (!loginExp.test(_login)){  // логин не валидный
+            $('#login_ico').attr('src', '../../static/img/error.png')
+            $('#login_err').text('Логин должен быть длинной 5-15 символов и состоять из букв и цифр!')
             valid_login = false;
         }else{// логин валидный
 
@@ -22,6 +24,8 @@ $(document).ready(function () {
                         $('#login_err').text('')
                         valid_login = true;
                     }else{
+                        $('#login_ico').attr('src', '../../static/img/error.png')
+                        $('#login_err').text('Такой логин не существует!!!!!!')
                         valid_login = false;
                     }
                 }
@@ -32,7 +36,7 @@ $(document).ready(function () {
         }
     })
 
-    $('#login_field').click(function () {
+    $('#login_field').focus(function () {
         $('#login_ico').attr('src', '../../static/img/question.png')
         $('#login_err').text('')
     })
@@ -44,28 +48,15 @@ $(document).ready(function () {
             $('#password_err').text('')
             valid_password = true;
         }else{// не валидный емайл
+            $('#password_ico').attr('src', '../../static/img/error.png')
+            $('#password_err').text('Пароль должен содержать хотя-бы одну заглавную букву и цыфры, количество символов 8-16!!!')
             valid_password = false;
         }
     })
 
-    $('#password_field').click(function () {  // сброс ошибок и иконок
+    $('#password_field').focus(function () {  // сброс ошибок и иконок
         $('#password_ico').attr('src', '../../static/img/question.png')
         $('#password_err').text('')
-    })
-    $('#check').click(function () {
-        if (
-            valid_login === false
-        ){
-            $('#login_ico').attr('src', '../../static/img/error.png')
-            $('#login_err').text('Такой логин не существует!!!!!!')
-        }
-        else if (
-            valid_password === false
-        ){
-            $('#password_ico').attr('src', '../../static/img/error.png')
-           $('#password_err').text('Неправильно введен пароль!')
-        }
-
     })
     $('#submit').click(function () {
         if (

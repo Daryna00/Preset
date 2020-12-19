@@ -1,28 +1,129 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block title %}
     Домашняя страница
 {% endblock title %}
 
 {% block img_logo %}
-<img alt="preset logo"
-     src="https://library.kissclipart.com/20181004/czq/kissclipart-snapshot-icon-transparent-clipart-computer-icons-s-a70a50a60394b814.png"
-     width="8%">
+
+<img width="13%" src="{% static 'img/C4500EC1-500E-45F4-A24C-9FDAD8914040.png' %}" style="margin: -100px 15px;" alt="preset logo">
 {% endblock img_logo %}
 
 {% block title1 %}
 <h1>Добро пожаловать на страницу My Presets!</h1>
 {% endblock title1 %}
-
+{% block menu %}
+{% endblock menu %}
 {% block content %}
-<p><img src="{% static 'img/2DB128C9-AB99-48BC-B427-AB85CEB9BE35.png' %}" alt="preset1" width="25%">
-<img src="{% static 'img/2DB128C9-AB99-48BC-B427-AB85CEB9BE35.png' %}" alt="preset1" width="25%">
-<img src="{% static 'img/2DB128C9-AB99-48BC-B427-AB85CEB9BE35.png' %}" alt="preset1" width="25%">
-<img src="{% static 'img/2DB128C9-AB99-48BC-B427-AB85CEB9BE35.png' %}" alt="preset1" width="25%">
-<img src="{% static 'img/2DB128C9-AB99-48BC-B427-AB85CEB9BE35.png' %}" alt="preset1" width="25%">
-</p>
+<div>
+    {% for product in page1_obj %}
+    {% if product.draft %}
+    <td>
+        &emsp;&emsp;&nbsp;<a href="http://127.0.0.1:8000/product/{{ product.slug }}/details" style="background: white; border: none; cursor: pointer; color: white; box-shadow: none;" ><img src="/media/{{product.image}}" alt="img" style="border-radius: 50%; width: 280px; height: 260px;"></a>&emsp;&emsp;&nbsp;
+        {{ product.name }}
+    </td>
+    {% endif %}
+    {% endfor %}
+<div class="row">
+                {% if page1_obj.has_previous %}
+                    <a href="?page1=1" class="button_menu"> 1 </a>
+                    {% if page1_obj.previous_page_number != 1 %}
+                        ...
+                        <a href="?page1={{page1_obj.previous_page_number}}" class="button_menu"> <<< </a>
+                    {% endif %}
+                {% endif %}
+
+
+
+                {% if page1_obj.has_next %}
+                    {% if page1_obj.next_page_number  !=  page1_obj.paginator.num_pages %}
+                        <a href="?page={{page1_obj.next_page_number}}" class="button_menu"> >>> </a>
+                        ...
+                    {% endif %}
+                    <a href="?page={{page1_obj.paginator.num_pages}}" class="button_menu"> {{page1_obj.paginator.num_pages}} </a>
+                {% endif %}
+
+
+            </div>
+     </div>
 {% endblock content %}
+{% block content1 %}
+
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+<form class="search-wrapper"  action="" method="get" >
+    <div class="input-holder">
+        <input type="text" id="search" name="search" class="search-input" placeholder="Type to search" />
+        <button class="search-icon"  type="submit" value="Search" onclick="searchToggle(this, event);"><span></span></button>
+    </div>
+    <span class="close" onclick="searchToggle(this, event);"></span>
+</form>
+<div  style="margin: 0px 0px 0px 200px; background: white;">
+     <ul  id="main-product" class="main-product">
+         <li class="common-filter">
+             <form action="#">
+                 {% for product in product %}
+                 <li class="filter-list">
+                     <input class="pixel-radio checkbox-category" type="checkbox" id="product{{product.id}}">
+                     <label for="product{{product.id}}">{{product.name}}</label>
+                 </li>
+                 {% endfor %}
+            </form>
+         </li>
+     </ul>
+    <a class="btn btn-primary text-light" id="product-filter-button" href="?">Filter</a>
+    </div>
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock content1 %}
+{% block content2 %}
+
+
+
+<div class="specia-top">
+			<ul class="grid_2">
+
+{% for merchan in page_obj %}
+	{% if merchan.draft %}
+        &emsp;&emsp;&emsp;&emsp;&emsp;<div style="display: inline-block; margin: 0px 13px;">
+           <a href="http://127.0.0.1:8000/product/merchan/{{ merchan.slug }}/detail">
+                <img src="/media/{{merchan.after_img}}" alt="img" width="170%" >
+            </a>
+            <h1 class="card-merchan__name" style="text-decoration: none; font-family: 'Caveat', cursive; font-size: 18px;">{{merchan.name}}
+            </h1>
+            <p style="text-decoration: none; font-family: 'Open Sans Condensed', sans-serif; text-align: center; ">
+                <a href="{% url 'add_to_card' merchan.slug %}" class="card-merchan__cost">
+                    {{merchan.cost}}₴
+                </a>
+            </p>
+
+        </div>
+    {% endif %}
+{% endfor %}
+                </ul>
+    <div class="row">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1" class="button_menu"> 1 </a>
+                    {% if page_obj.previous_page_number != 1 %}
+                        ...
+                        <a href="?page={{page_obj.previous_page_number}}" class="button_menu"> <<< </a>
+                    {% endif %}
+                {% endif %}
+
+
+
+                {% if page_obj.has_next %}
+                    {% if page_obj.next_page_number  !=  page_obj.paginator.num_pages %}
+                        <a href="?page={{page_obj.next_page_number}}" class="button_menu"> >>> </a>
+                        ...
+                    {% endif %}
+                    <a href="?page={{page_obj.paginator.num_pages}}" class="button_menu"> {{page_obj.paginator.num_pages}} </a>
+                {% endif %}
+
+
+            </div>
+
+    </div>
+{% endblock content2 %}
+<script src="static/js/main.js"></script>
 
 
 

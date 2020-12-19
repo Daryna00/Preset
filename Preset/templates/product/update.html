@@ -2,11 +2,16 @@
 {% load static %}
 
 {% block title %}
-
+    Создание категории пресетов
 {% endblock title %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock link %}
 
 {% block img_logo %}
 
+<img width="13%" src="{% static 'img/C4500EC1-500E-45F4-A24C-9FDAD8914040.png' %}" style="margin: 30px 15px;" alt="preset logo">
 {% endblock img_logo %}
 
 {% block title1 %}
@@ -14,5 +19,25 @@
 {% endblock title1 %}
 
 {% block content %}
+<h1>Создать Группу:</h1>
+
+
+<form class="form-group" id="create-product" method="post" action="{% url 'update_product' product.slug %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    Form to add product <a href="{% url 'product_homepage' %}">Назад</a>
+
+    {% for field in product_form %}
+    <p>
+        {{ field.label_tag }} {{ field }}
+    </p>
+    {% endfor %}
+
+        <input id="submit" type="submit" value="Send" class="button">
+        <input type="reset" value="Clear" class="button">
+
+</form>
 
 {% endblock content %}
+
+
+

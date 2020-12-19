@@ -63,6 +63,7 @@
               display: block;
               text-align: right;
               margin: 12px 0;
+
             }
 
             .fab-buttons__link {
@@ -158,5 +159,3 @@
     box-shadow: 0 0 0 40px rgba(0, 0, 0, 0);
   }
 }
-
-

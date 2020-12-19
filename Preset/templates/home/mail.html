@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width"/>
+
+    <!-- For development, pass document through inliner -->
+    <link rel="stylesheet" href="static/css/mail.css">
+
+    <style type="text/css">
+
+    /* Your custom styles go here */
+
+    </style>
+</head>
+<body>
+<table class="body-wrap">
+    <tr>
+        <td class="container">
+
+            <!-- Message start -->
+            <table>
+                <tr>
+                    <td align="center" style="width: 1000px; padding: 80px 0; background: #71bc37; color: white;">
+
+                        <h1>Вопросы, связь с пользователем!</h1>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="content">
+
+                        <h2 style="text-align: center;">Тема: {{form_subject}}</h2>
+                        <p>Email пользователя: {{form_email}}</p>
+                        <p style="text-align: center; font-family: 'Amatic SC', cursive;">Текст вопроса: {{form_subject}}</p>
+
+                    </td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table>
+</body>
+</html>

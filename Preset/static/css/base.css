@@ -9,7 +9,6 @@ nav{
     font-size: 50px;
     height: 300px;
     padding: 10px;
-    margin: -8px -8px 2px -8px;
     text-align: left;
     justify-content: left;
 }
@@ -74,50 +73,49 @@ img{
     opacity: 100%;
 }
 
+
 .container{
     background: white;
     /*background-color: rgba(11, 33, 11, 10%);*/
 
     width: 800px;
     min-height: 400px;
-    width: 1000px;
+    width: 1400px;
     min-height: 300px;
     font-family: 'Amatic SC', cursive;
     font-size: 30px;
-    text-align: justify;
+    text-align: center;
     border-radius: 10px;
     padding: 10px 15px;
-    margin: 20px 0px 0px 0px;
+    margin: 70px 0px 60px 0px;
+
 }
+
 
 .container1{
     background: white;
     /*background-color: rgba(11, 33, 11, 10%);*/
     color: black;
-    position: absolute; /* Абсолютное позиционирование */
-    right: 0; /* Положение от правого края окна */
-    top: 370px; /* Положение от верхнего края */
-    width: 700px;
+    width: 400px;
     min-height: 200px;
     font-family: 'Amatic SC', cursive;
     font-size: 30px;
     text-align: justify;
     padding: 10px 15px;
-    margin: 40px 0px 0px 0px;
+    margin: -300px 0px 0px 1450px;
 
 }
 .container2{
     background: white;
     /*background-color: rgba(11, 33, 11, 10%);*/
     color: black;
-    margin: 120px 2px 0px 0px;
     min-height: 400px;
     font-family: 'Amatic SC', cursive;
     font-size: 30px;
-    text-align: justify;
-
-
+    text-align: center;
+    margin: 70px 0px 0px 0px;
     padding: 10px 15px;
+    justify-content: right;
 }
 
 footer{
@@ -130,11 +128,13 @@ footer{
     color: gold;
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 20px;
-    right: 0;
+
     height: 50px;
     padding: 10px;
     justify-content: center;
-    margin: 30px -8px -30px -10px;
+
     text-align: center;
-    justify-content: center;
+
+.order_details_table{background:#e5ecee;padding:30px;margin-top:75px}@media (min-width: 767px){.order_details_table{margin-top:45px}}.order_details_table h2{color:#222;font-size:18px;padding-bottom:15px}.order_details_table .table{margin-bottom:0px}.order_details_table .table thead tr th{border-bottom:1px solid #ddd;font-size:14px;font-weight:normal}.order_details_table .table tbody tr td p{margin-bottom:0px}.order_details_table .table tbody tr td h5{color:#222;margin-bottom:0px}.order_details_table .table tbody tr td h4{font-size:14px;text-transform:uppercase;margin-bottom:0px;color:#222}.order_details_table .table tbody tr:last-child td{border-top:1px solid #ddd}.order_details_table .table tbody tr:last-child td p{color:#777}
+
 
