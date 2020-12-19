@@ -49,7 +49,9 @@ def index(request):
 
     filtered_product = request.GET.getlist('product')
     filtered_product = list(map(int, filtered_product))
-    all_orders = Order.objects.filter(customer=request.user)
+    if request.user.is_authenticated:
+        all_orders = Order.objects.filter()
+        data['orders'] = all_orders
     if filtered_product:
         merchan = Merchandise.objects.filter(product__id__in=filtered_product)
     else:
@@ -74,7 +76,7 @@ def index(request):
     data['page_obj'] = page_obj
     data['product'] = product
     data['merchan'] = merchan
-    data['orders'] = all_orders
+
     return render(request, 'home/index.html', context=data)
 
 
@@ -195,19 +197,20 @@ def delete_from_card(request, slug):
 def change_order_count(request, order_id):
     result = {}
     result['status'] = 'error'
-    if Order.objects.filter(id=order_id, customer=request.user).exists():
-        order = Order.objects.get(id=order_id, customer=request.user)
-        action = request.GET.get('action')
-        current_order_number = order.count
-        print(current_order_number)
-        if action == 'increase':
-            current_order_number += 1
-        elif action == 'decrease' and current_order_number > 1:
-            current_order_number -= 1
-        print(current_order_number)
-        order.count = current_order_number
-        order.save()
+    if request.user.is_authenticated:
+        if Order.objects.filter(id=order_id, customer=request.user).exists():
+            order = Order.objects.get(id=order_id, customer=request.user)
+            action = request.GET.get('action')
+            current_order_number = order.count
+            print(current_order_number)
+            if action == 'increase':
+                current_order_number += 1
+            elif action == 'decrease' and current_order_number > 1:
+                current_order_number -= 1
 
-        result['status'] = 'ok'
-        result['new_number'] = current_order_number
+            order.count = current_order_number
+            order.save()
+
+            result['status'] = 'ok'
+            result['new_number'] = current_order_number
     return JsonResponse(result)
