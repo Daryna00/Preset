@@ -58,9 +58,9 @@
                             <td>
                                 <button id="decrease{{order.id}}" class="change_merchan_count ">-</button>
                                 <span class="order_count">{{ order.count}}</span>
-                                <button id="increase{{order.id}}" class="change_merchan_count ">+</button>
                             </td>
-                            <td class="order_cost">{{ order.merchan.cost}}</td>
+                            <td class="order_cost">{{ order.merchan.cost}}
+                            </td>
                         </tr>
                     {% endfor %}
                 </table>
