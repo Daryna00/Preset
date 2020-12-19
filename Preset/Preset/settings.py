@@ -25,7 +25,7 @@ SECRET_KEY = 'j!3jnvs=t5a_b2j-@+hdk2&i_^qsh-@8htr879fif)ze!&4_so'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'my-preset.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'my-presets-shop.herokuapp.com']
 
 
 # Application definition
